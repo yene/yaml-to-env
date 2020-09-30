@@ -1,0 +1,26 @@
+# author: yannick...
+
+trigger:
+  - none
+
+name: pipeline name
+
+pool:
+  vmImage: "ubuntu-20.04"
+
+variables:
+  - name: SQL_SERVER_NAME
+    value: sql-server
+  - name: SQL_SERVER_USER
+    value: admin
+  - name: SQL_SERVER_RG
+    value: resourcegroupanem
+  - name: DATABASE_NAME
+    value: ydata
+
+stages:
+  - stage: import_latest_export
+    displayName: "Import latest export"
+    jobs:
+      - job: import_latest_export
+        steps:
